@@ -1,4 +1,4 @@
-  # Arrays
+ # Arrays
 
 + [Squares of a Sorted Array](#squares-of-a-sorted-array)
 
@@ -11,11 +11,9 @@ https://leetcode.com/problems/squares-of-a-sorted-array/
 ```python
 import unittest
 from solution import Solution
-
 class TestSortedSquares(unittest.TestCase):
     def setUp(self):
         self.solution = Solution()
-
     def test_empty_nums(self):
         self.assertEqual(self.solution.sortedSquares([]), [])    
         
@@ -32,7 +30,6 @@ class TestSortedSquares(unittest.TestCase):
         
     def test_find_with_positive(self):
         self.assertEqual(self.solution.get_first_non_negative([2, 3, 5]), 0)
-
     def test_find_with_negative(self):
         self.assertEqual(self.solution.get_first_non_negative([-10, -5, -2]), 3)
         
@@ -41,8 +38,6 @@ class TestSortedSquares(unittest.TestCase):
         
     def test_find_with_mixed(self):
         self.assertEqual(self.solution.get_first_non_negative([-10, -5, 0, 1, 2, 3]), 2)     
-
-
 if __name__ == "__main__":
     unittest.main()   
 ```  
@@ -55,12 +50,10 @@ def get_first_non_negative(self, nums):
         if val >= 0:
             return i
     return len(nums)
-
 def sortedSquares(self, nums):
     right = self.get_first_non_negative(nums)
     left = right - 1
     result = []
-
     while left >= 0 and right < len(nums):
         if nums[left] ** 2 < nums[right] ** 2:
             result.append(nums[left] ** 2)
@@ -68,14 +61,11 @@ def sortedSquares(self, nums):
         else:
             result.append(nums[right] ** 2)
             right += 1
-
     while left >= 0:
         result.append(nums[left] ** 2)
         left -= 1
-
     while right < len(nums):
         result.append(nums[right] ** 2)
         right += 1
-
     return result  
 ```
